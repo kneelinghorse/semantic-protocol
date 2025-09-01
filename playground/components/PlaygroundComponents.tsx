@@ -30,14 +30,14 @@ export function SemanticAnalyzer() {
             className="flex items-center justify-between p-3 bg-zinc-800 rounded-lg"
           >
             <div className="flex items-center gap-3">
-              {getSemanticIcon(result.semanticType)}
+              {getSemanticIcon(result.semantic_type || 'unknown')}
               <div>
-                <div className="font-mono text-sm">{result.fieldName}</div>
-                <div className="text-xs text-zinc-500">{result.fieldType}</div>
+                <div className="font-mono text-sm">{result.field || 'unknown'}</div>
+                <div className="text-xs text-zinc-500">{result.dataType || 'unknown'}</div>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-sm font-medium">{result.semanticType}</div>
+              <div className="text-sm font-medium">{result.semantic_type || 'unknown'}</div>
               <div className="text-xs text-zinc-500">{result.confidence}% confidence</div>
             </div>
           </motion.div>
@@ -66,7 +66,7 @@ export function ConfidenceMeters() {
             className="space-y-1"
           >
             <div className="flex justify-between text-sm">
-              <span className="font-mono">{result.fieldName}</span>
+              <span className="font-mono">{result.field || 'unknown'}</span>
               <span className={getConfidenceColor(result.confidence)}>
                 {result.confidence}%
               </span>
@@ -95,7 +95,7 @@ export function CodeGenerator() {
 
   const generateCode = () => {
     return semanticResults.map(r => 
-      `<SemanticField field="${r.fieldName}" type="${r.semanticType}" context="${selectedContext}" />`
+      `<SemanticField field="${r.field}" type="${r.semantic_type}" context="${selectedContext}" />`
     ).join('\n');
   };
 
@@ -244,18 +244,23 @@ export function SharePanel() {
 }
 
 // Helper functions
-function getSemanticIcon(type: string) {
+function getSemanticIcon(type: string | null) {
+  if (!type) return <Database className="w-4 h-4 text-zinc-500" />;
+  
   const icons: Record<string, any> = {
     email: <Mail className="w-4 h-4 text-blue-500" />,
-    date: <Calendar className="w-4 h-4 text-green-500" />,
+    temporal: <Calendar className="w-4 h-4 text-green-500" />,
     currency: <DollarSign className="w-4 h-4 text-yellow-500" />,
     premium: <Star className="w-4 h-4 text-purple-500" />,
-    id: <Hash className="w-4 h-4 text-gray-500" />,
+    identifier: <Hash className="w-4 h-4 text-gray-500" />,
     url: <Globe className="w-4 h-4 text-cyan-500" />,
     phone: <Phone className="w-4 h-4 text-orange-500" />,
     address: <MapPin className="w-4 h-4 text-red-500" />,
     name: <User className="w-4 h-4 text-indigo-500" />,
-    boolean: <Shield className="w-4 h-4 text-pink-500" />,
+    status: <Shield className="w-4 h-4 text-pink-500" />,
+    percentage: <Zap className="w-4 h-4 text-orange-500" />,
+    danger: <Sparkles className="w-4 h-4 text-red-500" />,
+    cancellation: <Code className="w-4 h-4 text-red-500" />
   };
   return icons[type] || <Database className="w-4 h-4 text-zinc-500" />;
 }

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { SemanticResult, RenderContext } from './semantic';
+import { AnalysisResult, RenderContext } from './semantic';
 import { MissionSemantics } from './mission';
 
 export type SchemaType = 'prisma' | 'json' | 'typescript' | 'sql' | 'csv';
@@ -10,7 +10,7 @@ interface PlaygroundStore {
   schemaType: SchemaType;
   
   // Analysis results
-  semanticResults: SemanticResult[];
+  semanticResults: AnalysisResult[];
   missionAnalysis?: MissionSemantics;
   
   // UI state
@@ -21,7 +21,7 @@ interface PlaygroundStore {
   // Actions
   setInputSchema: (schema: string) => void;
   setSchemaType: (type: SchemaType) => void;
-  setSemanticResults: (results: SemanticResult[]) => void;
+  setSemanticResults: (results: AnalysisResult[]) => void;
   setMissionAnalysis: (analysis: MissionSemantics | undefined) => void;
   setSelectedContext: (context: RenderContext) => void;
   setIsAnalyzing: (analyzing: boolean) => void;
