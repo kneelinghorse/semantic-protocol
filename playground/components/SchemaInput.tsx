@@ -47,16 +47,16 @@ export default function SchemaInput() {
         const protocol = new SemanticProtocol();
         const fields = parseSchema(inputSchema, schemaType);
         const results = fields.map(field => {
-          const semantic = protocol.analyze(field.name, field.type);
+          const fieldDef = { 
+            name: field.name, 
+            type: field.type as any 
+          };
+          const semantic = protocol.analyze(fieldDef, 'list');
           // Count decisions eliminated
-          if (semantic.confidence > 70) {
+          if (semantic.metadata.confidence > 70) {
             incrementDecisions();
           }
-          return {
-            fieldName: field.name,
-            fieldType: field.type,
-            ...semantic
-          };
+          return semantic;
         });
 
         setSemanticResults(results);

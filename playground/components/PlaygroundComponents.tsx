@@ -30,15 +30,15 @@ export function SemanticAnalyzer() {
             className="flex items-center justify-between p-3 bg-zinc-800 rounded-lg"
           >
             <div className="flex items-center gap-3">
-              {getSemanticIcon(result.semantic_type || 'unknown')}
+              {getSemanticIcon(result.bestMatch?.semantic || null)}
               <div>
-                <div className="font-mono text-sm">{result.field || 'unknown'}</div>
-                <div className="text-xs text-zinc-500">{result.dataType || 'unknown'}</div>
+                <div className="font-mono text-sm">{result.field}</div>
+                <div className="text-xs text-zinc-500">{result.dataType}</div>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-sm font-medium">{result.semantic_type || 'unknown'}</div>
-              <div className="text-xs text-zinc-500">{result.confidence}% confidence</div>
+              <div className="text-sm font-medium">{result.bestMatch?.semantic || 'unknown'}</div>
+              <div className="text-xs text-zinc-500">{result.bestMatch?.confidence || 0}% confidence</div>
             </div>
           </motion.div>
         ))}
@@ -66,17 +66,17 @@ export function ConfidenceMeters() {
             className="space-y-1"
           >
             <div className="flex justify-between text-sm">
-              <span className="font-mono">{result.field || 'unknown'}</span>
-              <span className={getConfidenceColor(result.confidence)}>
-                {result.confidence}%
+              <span className="font-mono">{result.field}</span>
+              <span className={getConfidenceColor(result.bestMatch?.confidence || 0)}>
+                {result.bestMatch?.confidence || 0}%
               </span>
             </div>
             <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: 0 }}
-                animate={{ width: `${result.confidence}%` }}
+                animate={{ width: `${result.bestMatch?.confidence || 0}%` }}
                 transition={{ delay: i * 0.1 + 0.2, duration: 0.5 }}
-                className={`h-full ${getConfidenceGradient(result.confidence)}`}
+                className={`h-full ${getConfidenceGradient(result.bestMatch?.confidence || 0)}`}
               />
             </div>
           </motion.div>
@@ -95,7 +95,7 @@ export function CodeGenerator() {
 
   const generateCode = () => {
     return semanticResults.map(r => 
-      `<SemanticField field="${r.field}" type="${r.semantic_type}" context="${selectedContext}" />`
+      `<SemanticField field="${r.field}" type="${r.bestMatch?.semantic || 'unknown'}" context="${selectedContext}" />`
     ).join('\n');
   };
 
