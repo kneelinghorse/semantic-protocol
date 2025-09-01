@@ -1,103 +1,177 @@
-import Image from "next/image";
+import { SemanticProtocol } from '@kneelinghorse/semantic-protocol'
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // Demo data
+  const fields = [
+    { name: 'user_email', type: 'string' as const },
+    { name: 'account_balance', type: 'decimal' as const },
+    { name: 'is_premium', type: 'boolean' as const },
+    { name: 'cancelled_at', type: 'timestamp' as const },
+    { name: 'subscription_price', type: 'decimal' as const },
+    { name: 'error_count', type: 'integer' as const },
+    { name: 'profile_url', type: 'string' as const },
+    { name: 'last_payment_at', type: 'timestamp' as const },
+    { name: 'discount_percentage', type: 'float' as const },
+  ]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const protocol = new SemanticProtocol()
+  const results = fields.map(field => protocol.analyze(field, 'list'))
+
+  return (
+    <main className="min-h-screen p-8 max-w-6xl mx-auto">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-2">
+          Semantic Protocol Demo
+        </h1>
+        <p className="text-gray-600">
+          Automatic semantic understanding of data fields
+        </p>
+        <div className="flex gap-4 mt-4">
+          <a 
+            href="https://www.npmjs.com/package/@kneelinghorse/semantic-protocol"
+            className="text-blue-600 hover:underline"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
+            npm: semantic-protocol
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <a 
+            href="https://www.npmjs.com/package/@kneelinghorse/prisma-semantic-generator"
+            className="text-blue-600 hover:underline"
           >
-            Read our docs
+            npm: prisma-generator
+          </a>
+          <a 
+            href="https://github.com/kneelinghorse/semantic-protocol"
+            className="text-blue-600 hover:underline"
+          >
+            GitHub
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </div>
+
+      <div className="bg-blue-50 p-4 rounded-lg mb-8">
+        <p className="text-sm">
+          <strong>What&apos;s happening?</strong> The Semantic Protocol analyzes field names and types
+          to understand what they mean and how they should be displayed. No manual decisions needed!
+        </p>
+      </div>
+
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <table className="w-full">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Field Name
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Data Type
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Detected Semantic
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Confidence
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Render Instruction
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {results.map((result, i) => (
+              <tr key={i}>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <code className="text-sm bg-gray-100 px-2 py-1 rounded">
+                    {result.field}
+                  </code>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {result.dataType}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                    ${result.bestMatch?.semantic === 'email' ? 'bg-blue-100 text-blue-800' : ''}
+                    ${result.bestMatch?.semantic === 'currency' ? 'bg-green-100 text-green-800' : ''}
+                    ${result.bestMatch?.semantic === 'premium' ? 'bg-yellow-100 text-yellow-800' : ''}
+                    ${result.bestMatch?.semantic === 'cancellation' ? 'bg-red-100 text-red-800' : ''}
+                    ${result.bestMatch?.semantic === 'temporal' ? 'bg-purple-100 text-purple-800' : ''}
+                    ${result.bestMatch?.semantic === 'danger' ? 'bg-red-100 text-red-800' : ''}
+                    ${result.bestMatch?.semantic === 'url' ? 'bg-indigo-100 text-indigo-800' : ''}
+                    ${result.bestMatch?.semantic === 'percentage' ? 'bg-teal-100 text-teal-800' : ''}
+                    ${!result.bestMatch ? 'bg-gray-100 text-gray-800' : ''}
+                  `}>
+                    {result.bestMatch?.semantic || 'unknown'}
+                  </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  <span className="font-mono">
+                    {result.bestMatch ? `${result.bestMatch.confidence}%` : '—'}
+                  </span>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <code className="text-xs bg-gray-50 px-2 py-1 rounded">
+                    {result.renderInstruction.component}
+                    {result.renderInstruction.variant && `:${result.renderInstruction.variant}`}
+                  </code>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="mt-12 grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">How It Works</h2>
+          <ol className="space-y-2 text-sm">
+            <li className="flex">
+              <span className="font-bold mr-2">1.</span>
+              <span>Analyzes field names for semantic patterns</span>
+            </li>
+            <li className="flex">
+              <span className="font-bold mr-2">2.</span>
+              <span>Checks data types for additional context</span>
+            </li>
+            <li className="flex">
+              <span className="font-bold mr-2">3.</span>
+              <span>Assigns confidence scores to matches</span>
+            </li>
+            <li className="flex">
+              <span className="font-bold mr-2">4.</span>
+              <span>Returns render instructions for UI</span>
+            </li>
+          </ol>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-semibold mb-4">Why This Matters</h2>
+          <ul className="space-y-2 text-sm">
+            <li className="flex">
+              <span className="mr-2">✅</span>
+              <span>No more manual component mapping</span>
+            </li>
+            <li className="flex">
+              <span className="mr-2">✅</span>
+              <span>Consistent UI across your app</span>
+            </li>
+            <li className="flex">
+              <span className="mr-2">✅</span>
+              <span>Works with any database schema</span>
+            </li>
+            <li className="flex">
+              <span className="mr-2">✅</span>
+              <span>Zero dependencies, pure functions</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-12 p-6 bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg">
+        <h3 className="text-lg font-semibold mb-2">🏆 Built with Claude Code</h3>
+        <p className="text-sm text-gray-700">
+          This project was built in collaboration with Claude Code, shipping 2 npm packages
+          in one session. AI pair programming at its finest!
+        </p>
+      </div>
+    </main>
+  )
 }
