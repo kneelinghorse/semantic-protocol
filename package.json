@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "dev": "tsc --watch",
     "test": "tsx test-typescript.ts",
     "demo": "tsx demo-typescript.ts",
     "prepare": "npm run build"
