@@ -1,0 +1,29 @@
+# Source files (only include built dist)
+*.ts
+!*.d.ts
+
+# Test files
+test-*.ts
+test_*.py
+demo.html
+
+# Python files
+*.py
+
+# Config files (except package.json)
+tsconfig.json
+.gitignore
+
+# Documentation
+CLAUDE_CODE_MISSION.md
+PORT_COMPARISON.md
+
+# Development files
+examples.py
+semantic-protocol.js
+
+# Other
+node_modules/
+.git/
+.DS_Store
+*.log

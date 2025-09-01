@@ -1,0 +1,46 @@
+{
+  "name": "@kneelinghorse/prisma-semantic-generator",
+  "version": "1.0.0",
+  "description": "Prisma generator for automatic semantic analysis of database schemas",
+  "main": "dist/generator.js",
+  "bin": {
+    "prisma-semantic": "./bin/prisma-semantic.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "prisma",
+    "generator",
+    "semantic",
+    "protocol",
+    "ui",
+    "automatic"
+  ],
+  "author": "Semantic Protocol Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/generator-helper": "^5.0.0",
+    "@kneelinghorse/semantic-protocol": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semantic-protocol/semantic-protocol"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

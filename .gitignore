@@ -1,0 +1,87 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+*.lcov
+.nyc_output
+
+# Production builds
+dist/
+build/
+*.tsbuildinfo
+
+# Misc
+.DS_Store
+*.pem
+.env
+.env*.local
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python (for the original implementation)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+migrations/
+
+# Generated files (but we want to keep some for examples)
+# src/generated/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Logs
+logs/
+*.log
+
+# Demo/Example builds
+examples/*/dist/
+examples/*/.next/
+examples/*/out/
+apps/*/dist/
+apps/*/.next/
+apps/*/out/
+
+# Vercel
+.vercel
+
+# Turborepo
+.turbo
+
+# Keep the generated semantics for demo purposes
+!src/generated/semantics/

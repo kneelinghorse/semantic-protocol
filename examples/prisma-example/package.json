@@ -1,0 +1,19 @@
+{
+  "name": "prisma-semantic-example",
+  "version": "1.0.0",
+  "description": "Example project demonstrating Prisma Semantic Generator",
+  "scripts": {
+    "generate": "prisma generate",
+    "semantic": "prisma-semantic generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.0.0",
+    "@kneelinghorse/semantic-protocol": "^1.0.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.0.0",
+    "@kneelinghorse/prisma-semantic-generator": "file:../../packages/prisma-semantic-generator",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

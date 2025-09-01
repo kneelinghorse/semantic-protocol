@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic Protocol - Live Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            color: rgba(255,255,255,0.9);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .card h2 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+        
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 100%;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            min-height: 100px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .semantic-type {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .render-instruction {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            background: #e0e0e0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        
+        .confidence {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        .schema-input {
+            width: 100%;
+            min-height: 150px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            resize: vertical;
+        }
+        
+        .results-grid {
+            display: grid;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .field-result {
+            display: grid;
+            grid-template-columns: 150px 100px 120px 180px;
+            gap: 1rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 6px;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .field-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .field-type {
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .field-result {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧬 Semantic Protocol</h1>
+        <p class="subtitle">Watch as the protocol understands your data's meaning in real-time</p>
+        
+        <div class="demo-grid">
+            <!-- Single Field Analyzer -->
+            <div class="card">
+                <h2>Single Field Analysis</h2>
+                
+                <div class="input-group">
+                    <label for="fieldName">Field Name</label>
+                    <input type="text" id="fieldName" placeholder="e.g., is_cancelled, total_price, created_at" value="is_cancelled">
+                </div>
+                
+                <div class="input-group">
+                    <label for="fieldType">Field Type</label>
+                    <select id="fieldType">
+                        <option value="string">string</option>
+                        <option value="boolean" selected>boolean</option>
+                        <option value="integer">integer</option>
+                        <option value="decimal">decimal</option>
+                        <option value="float">float</option>
+                        <option value="timestamp">timestamp</option>
+                        <option value="date">date</option>
+                        <option value="enum">enum</option>
+                        <option value="uuid">uuid</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="context">Rendering Context</label>
+                    <select id="context">
+                        <option value="list" selected>List View</option>
+                        <option value="detail">Detail View</option>
+                        <option value="form">Form Input</option>
+                        <option value="timeline">Timeline</option>
+                    </select>
+                </div>
+                
+                <button onclick="analyzeSingle()">Analyze Field</button>
+                
+                <div id="singleResult" class="result">
+                    <div style="color: #999; text-align: center; padding: 2rem;">
+                        Results will appear here...
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Schema Analyzer -->
+            <div class="card">
+                <h2>Schema Batch Analysis</h2>
+                
+                <div class="input-group">
+                    <label for="schemaInput">Database Schema (JSON)</label>
+                    <textarea id="schemaInput" class="schema-input">[
+  {"name": "id", "type": "uuid"},
+  {"name": "email", "type": "string"},
+  {"name": "is_premium", "type": "boolean"},
+  {"name": "subscription_price", "type": "decimal"},
+  {"name": "last_login_at", "type": "timestamp"},
+  {"name": "cancellation_date", "type": "date"},
+  {"name": "completion_rate", "type": "float"},
+  {"name": "status", "type": "enum"}
+]</textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="batchContext">Context for All Fields</label>
+                    <select id="batchContext">
+                        <option value="list" selected>List View</option>
+                        <option value="detail">Detail View</option>
+                        <option value="form">Form Input</option>
+                        <option value="timeline">Timeline</option>
+                    </select>
+                </div>
+                
+                <button onclick="analyzeSchema()">Analyze Schema</button>
+                
+                <div id="schemaResult" class="result">
+                    <div style="color: #999; text-align: center; padding: 2rem;">
+                        Schema analysis will appear here...
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Live Examples -->
+        <div class="card">
+            <h2>Try These Examples</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <button onclick="tryExample('is_cancelled', 'boolean', 'list')">Cancellation Field</button>
+                <button onclick="tryExample('monthly_payment', 'decimal', 'detail')">Currency Field</button>
+                <button onclick="tryExample('created_at', 'timestamp', 'list')">Temporal Field</button>
+                <button onclick="tryExample('user_email', 'string', 'form')">Email Field</button>
+                <button onclick="tryExample('completion_percentage', 'float', 'detail')">Percentage Field</button>
+                <button onclick="tryExample('error_message', 'string', 'list')">Danger Field</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="semantic-protocol.js"></script>
+    <script>
+        // Initialize protocol
+        const { analyze, protocol } = window.SemanticProtocol;
+        
+        function analyzeSingle() {
+            const fieldName = document.getElementById('fieldName').value;
+            const fieldType = document.getElementById('fieldType').value;
+            const context = document.getElementById('context').value;
+            
+            if (!fieldName) {
+                alert('Please enter a field name');
+                return;
+            }
+            
+            const result = analyze(fieldName, fieldType, null, context);
+            
+            const resultHtml = `
+                <div class="result-item">
+                    <div>
+                        <div class="semantic-type">Semantic: ${result.semanticType}</div>
+                        <div class="confidence">Confidence: ${Math.round(result.confidence * 100)}%</div>
+                    </div>
+                    <div class="render-instruction">${result.renderInstruction}</div>
+                </div>
+                ${Object.keys(result.metadata.allMatches).length > 0 ? `
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e0e0;">
+                        <div style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">Other matches:</div>
+                        ${Object.entries(result.metadata.allMatches).map(([type, conf]) => `
+                            <div style="display: flex; justify-content: space-between; padding: 0.25rem; font-size: 0.85rem;">
+                                <span>${type}</span>
+                                <span style="color: #999;">${Math.round(conf * 100)}%</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            `;
+            
+            document.getElementById('singleResult').innerHTML = resultHtml;
+        }
+        
+        function analyzeSchema() {
+            const schemaInput = document.getElementById('schemaInput').value;
+            const context = document.getElementById('batchContext').value;
+            
+            try {
+                const schema = JSON.parse(schemaInput);
+                const results = protocol.batchAnalyze(schema, context);
+                
+                const resultHtml = `
+                    <div class="results-grid">
+                        ${schema.map(field => {
+                            const result = results[field.name];
+                            return `
+                                <div class="field-result">
+                                    <div class="field-name">${field.name}</div>
+                                    <div class="field-type">${field.type}</div>
+                                    <div class="semantic-type">${result.semanticType}</div>
+                                    <div class="render-instruction">${result.renderInstruction}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+                
+                document.getElementById('schemaResult').innerHTML = resultHtml;
+            } catch (e) {
+                alert('Invalid JSON schema. Please check your input.');
+                console.error(e);
+            }
+        }
+        
+        function tryExample(fieldName, fieldType, context) {
+            document.getElementById('fieldName').value = fieldName;
+            document.getElementById('fieldType').value = fieldType;
+            document.getElementById('context').value = context;
+            analyzeSingle();
+        }
+        
+        // Run initial analysis
+        analyzeSingle();
+    </script>
+</body>
+</html>
