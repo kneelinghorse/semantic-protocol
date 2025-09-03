@@ -1,0 +1,65 @@
+{
+  "mission": "React Integration Package",
+  "version": "2.0.0",
+  "objectives": [
+    "Seamless React developer experience",
+    "Zero-config integration",
+    "Full TypeScript support",
+    "React 18+ compatibility"
+  ],
+  "hooks": [
+    {
+      "name": "useSemantics",
+      "purpose": "Attach semantic manifest to components",
+      "features": ["auto-registration", "hot-reload support", "validation"]
+    },
+    {
+      "name": "useDiscovery",
+      "purpose": "Find components by semantic query",
+      "features": ["real-time updates", "caching", "relationship traversal"]
+    },
+    {
+      "name": "useRelationships",
+      "purpose": "Manage component relationships",
+      "features": ["automatic binding", "circular detection", "cascade updates"]
+    }
+  ],
+  "components": [
+    {
+      "name": "SemanticProvider",
+      "purpose": "Context provider for semantic registry",
+      "features": ["global registry", "dev tools integration", "SSR support"]
+    },
+    {
+      "name": "SemanticBoundary",
+      "purpose": "Error boundary with semantic context",
+      "features": ["semantic error reports", "recovery suggestions", "fallback UI"]
+    },
+    {
+      "name": "SemanticPortal",
+      "purpose": "Cross-tree semantic relationships",
+      "features": ["portal rendering", "relationship preservation", "context bridging"]
+    }
+  ],
+  "common_patterns": {
+    "forms": {
+      "libraries": ["react-hook-form", "formik", "react-final-form"],
+      "patterns": ["validation", "submission", "field arrays", "conditional fields"]
+    },
+    "tables": {
+      "libraries": ["react-table", "ag-grid-react", "material-table"],
+      "patterns": ["sorting", "filtering", "pagination", "row selection"]
+    },
+    "navigation": {
+      "libraries": ["react-router", "reach-router", "wouter"],
+      "patterns": ["routing", "breadcrumbs", "active states", "guards"]
+    }
+  },
+  "integration_examples": [
+    "NextJS app router",
+    "Vite SPA",
+    "Create React App",
+    "Remix",
+    "Gatsby"
+  ]
+}

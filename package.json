@@ -1,7 +1,7 @@
 {
   "name": "@kneelinghorse/semantic-protocol",
-  "version": "1.0.0",
-  "description": "Universal semantic understanding for data fields - pure pattern matching, zero dependencies",
+  "version": "2.0.0",
+  "description": "Teaching software to understand itself - semantic manifests for self-aware UI components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -9,7 +9,10 @@
     "dev": "tsc --watch",
     "test": "tsx test-typescript.ts",
     "demo": "tsx demo-typescript.ts",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "build:packages": "npm run build -ws --if-present",
+    "test:packages": "npm run test -ws --if-present",
+    "lint:packages": "npm run lint -ws --if-present"
   },
   "keywords": [
     "semantic",
@@ -47,5 +50,9 @@
   "homepage": "https://github.com/semantic-protocol/semantic-protocol#readme",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "workspaces": [
+    "packages/*",
+    "benchmarks"
+  ]
 }

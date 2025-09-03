@@ -1,0 +1,179 @@
+{
+  "mission": "SaaS Admin Dashboard Example",
+  "version": "2.0.0",
+  "objectives": [
+    "Complex UI with full semantic awareness",
+    "Demonstrate relationship management",
+    "Show context propagation",
+    "Highlight discovery features"
+  ],
+  "dashboard_structure": {
+    "layout": {
+      "sidebar": {
+        "type": "navigation",
+        "semantic_role": "primary-navigation",
+        "sections": ["users", "billing", "analytics", "settings"]
+      },
+      "header": {
+        "type": "container",
+        "semantic_role": "global-actions",
+        "components": ["search", "notifications", "user-menu"]
+      },
+      "main": {
+        "type": "container",
+        "semantic_role": "content-area",
+        "dynamic": true
+      }
+    },
+    "sections": {
+      "users": {
+        "components": {
+          "user_table": {
+            "type": "list:table",
+            "features": ["sort", "filter", "bulk-select", "pagination"],
+            "actions": ["view", "edit", "delete", "suspend"],
+            "relationships": {
+              "detail_view": "user_detail",
+              "edit_form": "user_edit",
+              "bulk_actions": "user_bulk_actions"
+            }
+          },
+          "user_detail": {
+            "type": "display",
+            "sections": ["profile", "activity", "permissions", "audit"],
+            "relationships": {
+              "list": "user_table",
+              "edit": "user_edit"
+            }
+          },
+          "user_edit": {
+            "type": "form",
+            "fields": ["name", "email", "role", "permissions"],
+            "validation": "real-time",
+            "relationships": {
+              "saves_to": "user_table",
+              "validates_with": "permission_validator"
+            }
+          }
+        },
+        "semantic_features": {
+          "role_based_ui": "Components adapt based on user role",
+          "permission_aware": "Actions filtered by permissions",
+          "audit_trail": "Automatic from semantic relationships"
+        }
+      },
+      "billing": {
+        "components": {
+          "subscription_overview": {
+            "type": "display:metrics",
+            "metrics": ["mrr", "churn", "ltv", "growth"],
+            "refresh": "real-time"
+          },
+          "invoice_list": {
+            "type": "list:table",
+            "features": ["filter:date", "export", "download"],
+            "relationships": {
+              "detail": "invoice_detail",
+              "payment": "payment_processor"
+            }
+          },
+          "payment_methods": {
+            "type": "list:cards",
+            "actions": ["add", "remove", "set-default"],
+            "security": "pci-compliant"
+          }
+        },
+        "semantic_features": {
+          "automatic_calculations": "From semantic relationships",
+          "compliance": "Built into semantics",
+          "integration_ready": "Semantic API contracts"
+        }
+      },
+      "analytics": {
+        "components": {
+          "metric_cards": {
+            "type": "display:grid",
+            "metrics": ["users", "revenue", "conversion", "retention"],
+            "period_selector": true
+          },
+          "charts": {
+            "type": "display:visualization",
+            "types": ["line", "bar", "pie", "funnel"],
+            "interactive": true,
+            "relationships": {
+              "data_source": "metrics_api",
+              "filters": "date_range_picker"
+            }
+          },
+          "reports": {
+            "type": "list:table",
+            "actions": ["view", "schedule", "export", "share"],
+            "relationships": {
+              "generator": "report_builder",
+              "scheduler": "cron_service"
+            }
+          }
+        },
+        "semantic_features": {
+          "metric_discovery": "Find related metrics automatically",
+          "drill_down": "Navigate relationships for details",
+          "context_aware": "Suggestions based on context"
+        }
+      },
+      "settings": {
+        "components": {
+          "setting_groups": {
+            "type": "navigation:tabs",
+            "groups": ["general", "security", "integrations", "api"],
+            "relationships": {
+              "content": "setting_forms"
+            }
+          },
+          "setting_forms": {
+            "type": "form:dynamic",
+            "validation": "on-change",
+            "features": ["preview", "reset", "import-export"],
+            "relationships": {
+              "affects": "entire_application",
+              "validates_with": "config_validator"
+            }
+          }
+        },
+        "semantic_features": {
+          "change_impact": "Show affected components",
+          "validation_cascade": "Check related settings",
+          "rollback": "Semantic versioning of configs"
+        }
+      }
+    }
+  },
+  "cross_cutting_concerns": {
+    "permissions": {
+      "semantic_integration": "Every component knows its permission requirements",
+      "automatic_filtering": "UI adapts based on user permissions",
+      "audit_ready": "All actions tracked with semantic context"
+    },
+    "notifications": {
+      "semantic_routing": "Route based on component relationships",
+      "context_aware": "Include semantic context in notifications",
+      "action_mapping": "Link notifications to semantic actions"
+    },
+    "search": {
+      "semantic_search": "Search by meaning, not just text",
+      "component_discovery": "Find components by semantics",
+      "relationship_navigation": "Follow semantic relationships"
+    }
+  },
+  "integration_points": {
+    "external_apis": {
+      "payment": "Stripe semantic adapter",
+      "analytics": "Segment semantic adapter",
+      "support": "Intercom semantic adapter"
+    },
+    "internal_services": {
+      "auth": "Semantic permission service",
+      "audit": "Semantic audit logger",
+      "workflow": "Semantic process engine"
+    }
+  }
+}

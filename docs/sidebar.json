@@ -1,0 +1,188 @@
+{
+  "sections": [
+    {
+      "title": "Getting Started",
+      "path": "/getting-started",
+      "items": [
+        {
+          "title": "Installation",
+          "path": "/getting-started/installation"
+        },
+        {
+          "title": "Quick Start",
+          "path": "/getting-started/quick-start"
+        },
+        {
+          "title": "First Component",
+          "path": "/getting-started/first-component"
+        },
+        {
+          "title": "Basic Examples",
+          "path": "/getting-started/basic-examples"
+        }
+      ]
+    },
+    {
+      "title": "Core Concepts",
+      "path": "/core-concepts",
+      "items": [
+        {
+          "title": "Protocol Specification",
+          "path": "/core-concepts/protocol-spec"
+        },
+        {
+          "title": "Manifest Structure",
+          "path": "/core-concepts/manifest-structure"
+        },
+        {
+          "title": "Component Types",
+          "path": "/core-concepts/component-types"
+        },
+        {
+          "title": "Relationships",
+          "path": "/core-concepts/relationships"
+        },
+        {
+          "title": "Context & Flow",
+          "path": "/core-concepts/context-flow"
+        },
+        {
+          "title": "Validation",
+          "path": "/core-concepts/validation"
+        }
+      ]
+    },
+    {
+      "title": "API Reference",
+      "path": "/api",
+      "items": [
+        {
+          "title": "Core API",
+          "path": "/api/core"
+        },
+        {
+          "title": "Registration",
+          "path": "/api/registration"
+        },
+        {
+          "title": "Discovery",
+          "path": "/api/discovery"
+        },
+        {
+          "title": "Validation",
+          "path": "/api/validation"
+        },
+        {
+          "title": "Relationships",
+          "path": "/api/relationships"
+        },
+        {
+          "title": "Events",
+          "path": "/api/events"
+        }
+      ]
+    },
+    {
+      "title": "Integration Guides",
+      "path": "/guides",
+      "items": [
+        {
+          "title": "React",
+          "path": "/guides/react"
+        },
+        {
+          "title": "Vue",
+          "path": "/guides/vue"
+        },
+        {
+          "title": "Angular",
+          "path": "/guides/angular"
+        },
+        {
+          "title": "Web Components",
+          "path": "/guides/web-components"
+        },
+        {
+          "title": "Prisma Generator",
+          "path": "/guides/prisma"
+        },
+        {
+          "title": "CLI Tools",
+          "path": "/guides/cli"
+        },
+        {
+          "title": "VS Code Extension",
+          "path": "/guides/vscode-extension"
+        },
+        {
+          "title": "Browser DevTools",
+          "path": "/guides/devtools"
+        }
+      ]
+    },
+    {
+      "title": "Examples",
+      "path": "/examples",
+      "items": [
+        {
+          "title": "Form Validation",
+          "path": "/examples/form-validation"
+        },
+        {
+          "title": "Dynamic Discovery",
+          "path": "/examples/dynamic-discovery"
+        },
+        {
+          "title": "Component Relationships",
+          "path": "/examples/relationships"
+        },
+        {
+          "title": "Multi-Step Wizards",
+          "path": "/examples/wizards"
+        },
+        {
+          "title": "Accessibility",
+          "path": "/examples/accessibility"
+        },
+        {
+          "title": "Real-World Apps",
+          "path": "/examples/real-world"
+        }
+      ]
+    },
+    {
+      "title": "Reference",
+      "path": "/reference",
+      "items": [
+        {
+          "title": "TypeScript Types",
+          "path": "/reference/typescript"
+        },
+        {
+          "title": "Common Patterns",
+          "path": "/reference/patterns"
+        },
+        {
+          "title": "Best Practices",
+          "path": "/reference/best-practices"
+        },
+        {
+          "title": "Performance",
+          "path": "/reference/performance"
+        },
+        {
+          "title": "Migration Guide",
+          "path": "/reference/migration"
+        },
+        {
+          "title": "Troubleshooting",
+          "path": "/reference/troubleshooting"
+        },
+        {
+          "title": "FAQ",
+          "path": "/reference/faq"
+        }
+      ]
+    }
+  ]
+}

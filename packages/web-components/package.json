@@ -1,0 +1,70 @@
+{
+  "name": "@kneelinghorse/semantic-protocol-web-components",
+  "version": "2.0.0",
+  "description": "Web Components for Semantic Protocol - Framework-agnostic custom elements",
+  "main": "dist/semantic-components.js",
+  "module": "dist/semantic-components.esm.js",
+  "unpkg": "dist/semantic-components.umd.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -c -w",
+    "build:cdn": "rollup -c --environment BUILD:cdn",
+    "test": "web-test-runner",
+    "test:watch": "web-test-runner --watch",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "serve": "web-dev-server --open examples/"
+  },
+  "dependencies": {
+    "@semantic-protocol/core": "^2.0.0"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.8.0",
+    "@open-wc/testing": "^3.2.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@web/dev-server": "^0.3.0",
+    "@web/test-runner": "^0.17.0",
+    "@web/test-runner-playwright": "^0.10.0",
+    "eslint": "^8.0.0",
+    "lit": "^3.0.0",
+    "rollup": "^3.0.0",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-filesize": "^10.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "tslib": "^2.6.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "web-components",
+    "custom-elements",
+    "semantic",
+    "protocol",
+    "shadow-dom",
+    "framework-agnostic"
+  ],
+  "author": "",
+  "license": "MIT",
+  "customElements": "custom-elements.json",
+  "exports": {
+    ".": {
+      "import": "./dist/semantic-components.esm.js",
+      "require": "./dist/semantic-components.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./define": {
+      "import": "./dist/define.esm.js",
+      "require": "./dist/define.js"
+    }
+  }
+}

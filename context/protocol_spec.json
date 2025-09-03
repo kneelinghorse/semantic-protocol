@@ -1,0 +1,130 @@
+{
+  "version": "2.0.0",
+  "core_concepts": {
+    "manifest_structure": {
+      "protocol": "semantic-ui/v2",
+      "element": {
+        "type": "required: action|display|input|container|navigation",
+        "intent": "what the element intends to do",
+        "label": "human-readable label",
+        "criticality": "low|medium|high|critical"
+      },
+      "context": {
+        "flow": "which user flow this belongs to",
+        "step": "position in flow",
+        "prerequisites": "array of required conditions",
+        "outcomes": "array of possible results"
+      },
+      "relationships": {
+        "parent": "id of parent component",
+        "children": "array of child component ids",
+        "dependencies": "components this depends on",
+        "validators": "validation components",
+        "handlers": "event handler components"
+      },
+      "validation": {
+        "rules": "array of validation rules",
+        "messages": "error message templates",
+        "async": "boolean for async validation"
+      },
+      "metadata": {
+        "version": "component version",
+        "author": "component author",
+        "created": "timestamp",
+        "modified": "timestamp",
+        "tags": "array of tags"
+      }
+    },
+    "discovery_mechanism": {
+      "registration": "components self-register with registry",
+      "querying": "semantic selectors like 'type:payment intent:submit'",
+      "indexing": "automatic indexing by type, intent, context",
+      "caching": "LRU cache for query results"
+    },
+    "relationship_mapping": {
+      "types": ["parent-child", "dependency", "validation", "handler", "data-flow"],
+      "bidirectional": "relationships tracked both ways",
+      "integrity": "automatic orphan detection",
+      "cascading": "updates cascade through relationships"
+    },
+    "context_handling": {
+      "inheritance": "child components inherit parent context",
+      "overrides": "children can override specific context",
+      "propagation": "context flows through relationships",
+      "isolation": "context boundaries for security"
+    }
+  },
+  "common_patterns": {
+    "forms": {
+      "payment": {
+        "elements": ["card-number", "expiry", "cvv", "billing-address"],
+        "validation": ["luhn", "expiry-future", "cvv-length"],
+        "security": "pci-compliance"
+      },
+      "registration": {
+        "elements": ["email", "password", "confirm-password", "terms"],
+        "validation": ["email-format", "password-strength", "match"],
+        "flow": "multi-step possible"
+      },
+      "search": {
+        "elements": ["query", "filters", "sort", "pagination"],
+        "features": ["autocomplete", "suggestions", "history"]
+      }
+    },
+    "lists": {
+      "table": {
+        "features": ["sort", "filter", "select", "bulk-actions"],
+        "accessibility": "aria-table-roles"
+      },
+      "grid": {
+        "features": ["responsive", "masonry", "infinite-scroll"],
+        "layouts": ["fixed", "fluid", "responsive"]
+      },
+      "timeline": {
+        "features": ["chronological", "grouped", "filtered"],
+        "visualization": "temporal relationships"
+      }
+    },
+    "navigation": {
+      "menu": {
+        "types": ["horizontal", "vertical", "mega", "mobile"],
+        "features": ["multi-level", "icons", "badges", "active-state"]
+      },
+      "breadcrumb": {
+        "features": ["hierarchy", "clickable", "current-page"],
+        "accessibility": "aria-breadcrumb"
+      },
+      "stepper": {
+        "features": ["linear", "non-linear", "validation", "progress"],
+        "states": ["completed", "active", "disabled", "error"]
+      }
+    },
+    "feedback": {
+      "alert": {
+        "types": ["info", "success", "warning", "error"],
+        "features": ["dismissible", "action-button", "icon"]
+      },
+      "toast": {
+        "features": ["auto-dismiss", "stacking", "position"],
+        "duration": "configurable"
+      },
+      "modal": {
+        "features": ["overlay", "close-button", "esc-key", "click-outside"],
+        "sizes": ["small", "medium", "large", "fullscreen"]
+      }
+    }
+  },
+  "validation_rules": {
+    "manifest_required_fields": ["protocol", "element.type"],
+    "valid_element_types": ["action", "display", "input", "container", "navigation"],
+    "relationship_integrity": "all referenced ids must exist",
+    "circular_dependency_check": "no circular relationships allowed",
+    "context_consistency": "child context must be compatible with parent"
+  },
+  "performance_targets": {
+    "registration": "< 5ms per component",
+    "discovery": "< 20ms for complex queries",
+    "validation": "< 10ms per manifest",
+    "relationship_resolution": "< 15ms for full graph"
+  }
+}

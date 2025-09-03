@@ -1,0 +1,291 @@
+{
+  "name": "semantic-protocol-vscode",
+  "displayName": "Semantic Protocol",
+  "description": "IntelliSense, validation, and tools for Semantic Protocol",
+  "version": "2.0.0",
+  "publisher": "semantic-protocol",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "semantic",
+    "protocol",
+    "ui",
+    "components",
+    "validation"
+  ],
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#2196F3",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:vue",
+    "onLanguage:json",
+    "workspaceContains:**/.semanticrc.json",
+    "workspaceContains:**/*.semantic.json",
+    "onCommand:semantic-protocol.init"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "semantic-manifest",
+        "aliases": ["Semantic Manifest", "semantic"],
+        "extensions": [".semantic.json", ".manifest.json"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "semantic-manifest",
+        "scopeName": "source.semantic.json",
+        "path": "./syntaxes/semantic.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "semantic-protocol.init",
+        "title": "Initialize Semantic Protocol",
+        "category": "Semantic"
+      },
+      {
+        "command": "semantic-protocol.validate",
+        "title": "Validate Current File",
+        "category": "Semantic"
+      },
+      {
+        "command": "semantic-protocol.validateWorkspace",
+        "title": "Validate Workspace",
+        "category": "Semantic"
+      },
+      {
+        "command": "semantic-protocol.generateComponent",
+        "title": "Generate Component from Manifest",
+        "category": "Semantic"
+      },
+      {
+        "command": "semantic-protocol.generateManifest",
+        "title": "Generate Manifest from Component",
+        "category": "Semantic"
+      },
+      {
+        "command": "semantic-protocol.showVisualization",
+        "title": "Show Semantic Visualization",
+        "category": "Semantic"
+      },
+      {
+        "command": "semantic-protocol.analyzeWorkspace",
+        "title": "Analyze Semantic Coverage",
+        "category": "Semantic"
+      },
+      {
+        "command": "semantic-protocol.discover",
+        "title": "Discover Components",
+        "category": "Semantic"
+      },
+      {
+        "command": "semantic-protocol.fixAll",
+        "title": "Fix All Auto-fixable Issues",
+        "category": "Semantic"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceExtname == .json",
+          "command": "semantic-protocol.validate",
+          "group": "semantic"
+        },
+        {
+          "when": "resourceExtname == .json",
+          "command": "semantic-protocol.generateComponent",
+          "group": "semantic"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "semantic-protocol.validateWorkspace",
+          "group": "semantic"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "semantic-protocol.generateComponent",
+          "when": "resourceExtname == .json"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Semantic Protocol",
+      "properties": {
+        "semantic-protocol.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Semantic Protocol extension"
+        },
+        "semantic-protocol.validation.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable real-time validation"
+        },
+        "semantic-protocol.validation.mode": {
+          "type": "string",
+          "enum": ["strict", "loose", "none"],
+          "default": "strict",
+          "description": "Validation mode"
+        },
+        "semantic-protocol.validation.autoFix": {
+          "type": "boolean",
+          "default": false,
+          "description": "Auto-fix issues on save"
+        },
+        "semantic-protocol.autocomplete.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable IntelliSense for semantic manifests"
+        },
+        "semantic-protocol.autocomplete.showDocumentation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show documentation in autocomplete"
+        },
+        "semantic-protocol.hover.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show semantic information on hover"
+        },
+        "semantic-protocol.codeLens.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show code lens for semantic components"
+        },
+        "semantic-protocol.trace.server": {
+          "type": "string",
+          "enum": ["off", "messages", "verbose"],
+          "default": "off",
+          "description": "Trace language server communication"
+        }
+      }
+    },
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/javascript.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./snippets/react.json"
+      },
+      {
+        "language": "typescript",
+        "path": "./snippets/typescript.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/react.json"
+      },
+      {
+        "language": "vue",
+        "path": "./snippets/vue.json"
+      },
+      {
+        "language": "semantic-manifest",
+        "path": "./snippets/manifest.json"
+      }
+    ],
+    "jsonValidation": [
+      {
+        "fileMatch": "*.semantic.json",
+        "url": "./schemas/semantic-manifest.schema.json"
+      },
+      {
+        "fileMatch": ".semanticrc.json",
+        "url": "./schemas/semantic-config.schema.json"
+      }
+    ],
+    "problemMatchers": [
+      {
+        "name": "semantic-protocol",
+        "owner": "semantic-protocol",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(.*):(\\d+):(\\d+):\\s+(error|warning|info)\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        }
+      }
+    ],
+    "taskDefinitions": [
+      {
+        "type": "semantic",
+        "required": ["command"],
+        "properties": {
+          "command": {
+            "type": "string",
+            "description": "The semantic command to run"
+          },
+          "args": {
+            "type": "array",
+            "description": "Arguments to pass to the command"
+          }
+        }
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "semanticComponents",
+          "name": "Semantic Components",
+          "icon": "$(symbol-class)",
+          "contextualTitle": "Semantic Protocol"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "semanticComponents",
+        "contents": "No semantic components found.\n[Initialize Semantic Protocol](command:semantic-protocol.init)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vsce": "^2.15.0"
+  },
+  "dependencies": {
+    "@semantic-protocol/core": "^2.0.0",
+    "vscode-languageclient": "^9.0.0",
+    "vscode-languageserver": "^9.0.0",
+    "vscode-languageserver-textdocument": "^1.0.0"
+  }
+}

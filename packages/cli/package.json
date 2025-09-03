@@ -1,0 +1,76 @@
+{
+  "name": "@kneelinghorse/semantic-protocol-cli",
+  "version": "2.0.0",
+  "description": "Command-line interface for Semantic Protocol - analyze, validate, and generate semantic UI components",
+  "bin": {
+    "semantic": "./bin/semantic.js",
+    "sp": "./bin/semantic.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "bin",
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run build",
+    "semantic": "node bin/semantic.js"
+  },
+  "dependencies": {
+    "@kneelinghorse/semantic-protocol": "^2.0.0",
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "cosmiconfig": "^9.0.0",
+    "inquirer": "^9.2.12",
+    "ora": "^7.0.1",
+    "glob": "^10.3.10",
+    "chokidar": "^3.5.3",
+    "fs-extra": "^11.2.0",
+    "handlebars": "^4.7.8",
+    "table": "^6.8.1",
+    "open": "^10.0.3",
+    "express": "^4.18.2",
+    "ws": "^8.16.0",
+    "execa": "^8.0.1",
+    "semver": "^7.5.4",
+    "update-notifier": "^7.0.0",
+    "boxen": "^7.1.1",
+    "cli-progress": "^3.12.0",
+    "figlet": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/inquirer": "^9.0.0",
+    "@types/express": "^4.17.21",
+    "@types/ws": "^8.5.10",
+    "@types/fs-extra": "^11.0.4",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "cli",
+    "semantic",
+    "protocol",
+    "validation",
+    "generation",
+    "analysis",
+    "ui",
+    "components"
+  ],
+  "author": "Semantic Protocol Contributors",
+  "license": "MIT",
+  "preferGlobal": true
+}

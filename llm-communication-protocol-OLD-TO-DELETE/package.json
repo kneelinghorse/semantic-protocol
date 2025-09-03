@@ -1,0 +1,38 @@
+{
+  "name": "llm-communication-protocol",
+  "version": "1.0.0",
+  "description": "A semantic protocol for multi-LLM communication that preserves meaning across exchanges",
+  "main": "index.js",
+  "scripts": {
+    "start": "node demo.js",
+    "demo": "node demo.js",
+    "test": "node test.js",
+    "dev": "nodemon demo.js"
+  },
+  "keywords": [
+    "llm",
+    "ai",
+    "communication",
+    "protocol",
+    "semantic",
+    "claude",
+    "gpt",
+    "gemini",
+    "multi-agent",
+    "conversation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "@anthropic-ai/sdk": "^0.24.3",
+    "openai": "^4.52.1",
+    "@google/generative-ai": "^0.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

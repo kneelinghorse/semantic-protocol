@@ -1,0 +1,27 @@
+{
+  "name": "@semantic-protocol/benchmarks",
+  "version": "1.0.0",
+  "description": "Performance benchmarks for Semantic Protocol",
+  "main": "index.js",
+  "scripts": {
+    "benchmark": "node index.js",
+    "benchmark:verbose": "node index.js --verbose",
+    "benchmark:stress": "node index.js --stress",
+    "benchmark:charts": "node index.js --charts",
+    "benchmark:continuous": "node index.js --continuous 60000",
+    "benchmark:compare": "node index.js --compare ./reports/baseline.json",
+    "benchmark:all": "node index.js --stress --charts --verbose"
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "benchmark",
+    "performance",
+    "semantic-protocol",
+    "testing"
+  ],
+  "author": "Semantic Protocol Team",
+  "license": "MIT"
+}

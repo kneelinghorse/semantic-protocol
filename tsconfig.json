@@ -28,7 +28,8 @@
   },
   "include": [
     "index.ts",
-    "semantic-protocol.ts"
+    "semantic-protocol.ts",
+    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

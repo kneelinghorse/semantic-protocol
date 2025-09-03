@@ -1,0 +1,107 @@
+{
+  "mission": "E-Commerce Checkout Flow Example",
+  "version": "2.0.0",
+  "objectives": [
+    "Demonstrate real-world semantic benefits",
+    "Show automatic test generation",
+    "Highlight accessibility features",
+    "Prove relationship management"
+  ],
+  "checkout_flow": {
+    "steps": [
+      {
+        "id": "cart",
+        "components": ["cart-items", "cart-summary", "promo-code", "continue-button"],
+        "validations": ["minimum-order", "stock-availability", "promo-validity"],
+        "relationships": {
+          "next": "shipping",
+          "modifies": "order-total"
+        }
+      },
+      {
+        "id": "shipping",
+        "components": ["shipping-address", "shipping-method", "delivery-date"],
+        "validations": ["address-complete", "delivery-available", "method-valid"],
+        "relationships": {
+          "previous": "cart",
+          "next": "payment",
+          "affects": "order-total"
+        }
+      },
+      {
+        "id": "payment",
+        "components": ["payment-method", "billing-address", "card-details", "pay-button"],
+        "validations": ["card-valid", "address-complete", "funds-available"],
+        "security": {
+          "pci_compliance": true,
+          "tokenization": true,
+          "3d_secure": true
+        },
+        "relationships": {
+          "previous": "shipping",
+          "next": "confirmation",
+          "validates_with": "payment-processor"
+        }
+      },
+      {
+        "id": "confirmation",
+        "components": ["order-summary", "receipt", "tracking-info", "next-steps"],
+        "actions": ["email-receipt", "update-inventory", "trigger-fulfillment"],
+        "relationships": {
+          "previous": "payment",
+          "references": ["cart", "shipping", "payment"]
+        }
+      }
+    ],
+    "semantic_benefits": {
+      "automatic_testing": {
+        "flow_tests": "Generate from step relationships",
+        "validation_tests": "Generate from validation rules",
+        "accessibility_tests": "Generate from semantic types",
+        "integration_tests": "Generate from external relationships"
+      },
+      "self_documentation": {
+        "user_flow": "Auto-generate from steps",
+        "api_docs": "Generate from component contracts",
+        "error_messages": "Generate from validation rules"
+      },
+      "accessibility": {
+        "aria_labels": "Auto-generate from semantics",
+        "keyboard_nav": "Generate from flow relationships",
+        "screen_reader": "Full semantic context"
+      }
+    }
+  },
+  "components_detail": {
+    "cart_items": {
+      "type": "list",
+      "item_semantics": {
+        "product": "display",
+        "quantity": "input",
+        "remove": "action",
+        "price": "display"
+      }
+    },
+    "shipping_address": {
+      "type": "form",
+      "fields": {
+        "street": "input:text:required",
+        "city": "input:text:required",
+        "state": "input:select:required",
+        "zip": "input:text:pattern"
+      }
+    },
+    "payment_method": {
+      "type": "selector",
+      "options": ["credit_card", "paypal", "apple_pay"],
+      "conditional_fields": true
+    }
+  },
+  "test_generation_examples": [
+    "it('should validate minimum order amount')",
+    "it('should not proceed without shipping address')",
+    "it('should handle payment failure gracefully')",
+    "it('should maintain cart state through flow')",
+    "it('should be fully keyboard navigable')"
+  ]
+}

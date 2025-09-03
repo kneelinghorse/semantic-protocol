@@ -1,0 +1,131 @@
+{
+  "mission": "Browser DevTools Extension",
+  "version": "2.0.0",
+  "objectives": [
+    "Debug semantics in the browser",
+    "Visualize component relationships",
+    "Monitor performance impact",
+    "Interactive semantic editing"
+  ],
+  "panels": {
+    "inspector": {
+      "features": [
+        "Select element to view semantics",
+        "Edit manifests in real-time",
+        "Validate changes instantly",
+        "Copy manifest to clipboard"
+      ],
+      "display": {
+        "tree_view": "Hierarchical manifest display",
+        "json_view": "Raw JSON with syntax highlighting",
+        "diff_view": "Show changes from original"
+      }
+    },
+    "relationships": {
+      "features": [
+        "Interactive relationship graph",
+        "Filter by relationship type",
+        "Highlight circular dependencies",
+        "Navigate by clicking nodes"
+      ],
+      "visualizations": {
+        "force_directed": "D3 force-directed graph",
+        "hierarchical": "Tree layout",
+        "circular": "Circular layout",
+        "matrix": "Adjacency matrix"
+      }
+    },
+    "discovery": {
+      "features": [
+        "Semantic search across page",
+        "Filter by type/intent/context",
+        "Save common queries",
+        "Export results"
+      ],
+      "query_builder": {
+        "visual": "Drag-drop query builder",
+        "text": "Text-based query syntax",
+        "examples": "Common query templates"
+      }
+    },
+    "performance": {
+      "metrics": [
+        "Registration time per component",
+        "Discovery query performance",
+        "Validation overhead",
+        "Memory usage by semantics"
+      ],
+      "timeline": {
+        "events": "Semantic lifecycle events",
+        "flamegraph": "Performance breakdown",
+        "memory": "Memory allocation timeline"
+      }
+    },
+    "coverage": {
+      "report": {
+        "overall": "Percentage with semantics",
+        "by_type": "Coverage by component type",
+        "missing": "Components without semantics",
+        "incomplete": "Partial semantic coverage"
+      },
+      "suggestions": [
+        "Auto-detect component types",
+        "Suggest semantic manifests",
+        "One-click to add semantics"
+      ]
+    }
+  },
+  "context_menu": {
+    "items": [
+      "Inspect Semantic Manifest",
+      "Copy Manifest",
+      "Validate Semantics",
+      "Show Relationships",
+      "Generate Tests"
+    ]
+  },
+  "overlays": {
+    "semantic_badges": {
+      "display": "Show badges on semantic components",
+      "info": "Type, intent, validation status",
+      "click": "Open inspector panel"
+    },
+    "relationship_lines": {
+      "display": "Draw lines between related components",
+      "colors": "Different colors for relationship types",
+      "interactive": "Hover for details"
+    },
+    "coverage_heatmap": {
+      "display": "Color overlay showing semantic coverage",
+      "legend": "Coverage percentage scale",
+      "click": "Suggestions for improvement"
+    }
+  },
+  "storage": {
+    "settings": {
+      "theme": "Light/dark mode",
+      "panel_layout": "Panel positions",
+      "saved_queries": "User's saved searches",
+      "preferences": "Display preferences"
+    },
+    "cache": {
+      "manifests": "Cached semantic manifests",
+      "relationships": "Computed relationship graphs",
+      "performance": "Historical performance data"
+    }
+  },
+  "implementation": {
+    "manifest_v3": {
+      "permissions": ["activeTab", "storage", "devtools"],
+      "content_scripts": "Inject semantic inspector",
+      "devtools_page": "Main devtools entry",
+      "background": "Service worker for persistence"
+    },
+    "technologies": {
+      "ui": "React for panels",
+      "visualization": "D3.js for graphs",
+      "state": "Redux for state management",
+      "communication": "Chrome runtime messaging"
+    }
+  }
+}

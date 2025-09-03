@@ -1,0 +1,271 @@
+{
+  "valid": [
+    {
+      "id": "button-primary",
+      "element": {
+        "type": "action",
+        "intent": "submit"
+      },
+      "context": {
+        "variant": "primary",
+        "size": "medium"
+      },
+      "tags": ["interactive", "critical"]
+    },
+    {
+      "id": "form-login",
+      "element": {
+        "type": "input",
+        "intent": "collect"
+      },
+      "context": {
+        "flow": "authentication",
+        "validation": "required"
+      },
+      "relationships": {
+        "submits": "button-login",
+        "validates": ["field-username", "field-password"]
+      }
+    },
+    {
+      "id": "nav-main",
+      "element": {
+        "type": "navigation",
+        "intent": "guide"
+      },
+      "context": {
+        "position": "header",
+        "level": "primary"
+      },
+      "accessibility": {
+        "role": "navigation",
+        "label": "Main navigation"
+      }
+    },
+    {
+      "id": "modal-confirm",
+      "element": {
+        "type": "container",
+        "intent": "dialog"
+      },
+      "context": {
+        "modal": true,
+        "dismissible": true
+      },
+      "relationships": {
+        "triggeredBy": "button-delete",
+        "contains": ["text-confirm", "button-yes", "button-no"]
+      }
+    },
+    {
+      "id": "card-product",
+      "element": {
+        "type": "display",
+        "intent": "showcase"
+      },
+      "context": {
+        "layout": "card",
+        "interactive": true
+      },
+      "composition": [
+        {
+          "id": "image-product",
+          "element": { "type": "media", "intent": "illustrate" }
+        },
+        {
+          "id": "text-title",
+          "element": { "type": "display", "intent": "title" }
+        },
+        {
+          "id": "text-price",
+          "element": { "type": "display", "intent": "value" }
+        }
+      ]
+    }
+  ],
+  "invalid": [
+    {
+      "id": "missing-element",
+      "context": { "test": true },
+      "expectedError": "Missing required field: element"
+    },
+    {
+      "element": { "type": "action" },
+      "context": { "test": true },
+      "expectedError": "Missing required field: id"
+    },
+    {
+      "id": "invalid-type",
+      "element": {
+        "type": 123,
+        "intent": "submit"
+      },
+      "expectedError": "Invalid type for element.type: expected string"
+    },
+    {
+      "id": "invalid-relationships",
+      "element": { "type": "display" },
+      "relationships": "not-an-object",
+      "expectedError": "Invalid type for relationships: expected object"
+    },
+    {
+      "id": "circular-extends",
+      "extends": "circular-extends",
+      "element": { "type": "display" },
+      "expectedError": "Circular inheritance detected"
+    }
+  ],
+  "edge_cases": [
+    {
+      "id": "deeply-nested",
+      "element": { "type": "container" },
+      "context": {
+        "level1": {
+          "level2": {
+            "level3": {
+              "level4": {
+                "level5": {
+                  "level6": {
+                    "level7": {
+                      "level8": {
+                        "level9": {
+                          "level10": "deep value"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "large-array",
+      "element": { "type": "container" },
+      "tags": ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7", "tag8", "tag9", "tag10",
+               "tag11", "tag12", "tag13", "tag14", "tag15", "tag16", "tag17", "tag18", "tag19", "tag20",
+               "tag21", "tag22", "tag23", "tag24", "tag25", "tag26", "tag27", "tag28", "tag29", "tag30"]
+    },
+    {
+      "id": "unicode-support",
+      "element": { "type": "display" },
+      "context": {
+        "title": "测试 🎉 Тест",
+        "emoji": "🚀🎨🔥💡",
+        "rtl": "مرحبا بالعالم"
+      }
+    },
+    {
+      "id": "special-characters",
+      "element": { "type": "display" },
+      "context": {
+        "html": "<script>alert('xss')</script>",
+        "sql": "'; DROP TABLE users; --",
+        "path": "../../../etc/passwd"
+      }
+    },
+    {
+      "id": "maximum-size",
+      "element": { "type": "container" },
+      "description": "A manifest at the maximum recommended size",
+      "relationships": {
+        "children": ["child1", "child2", "child3", "child4", "child5", 
+                    "child6", "child7", "child8", "child9", "child10",
+                    "child11", "child12", "child13", "child14", "child15",
+                    "child16", "child17", "child18", "child19", "child20"]
+      }
+    }
+  ],
+  "relationships": {
+    "parent-child": [
+      {
+        "id": "parent-1",
+        "element": { "type": "container" },
+        "relationships": {
+          "children": ["child-1", "child-2", "child-3"]
+        }
+      },
+      {
+        "id": "child-1",
+        "element": { "type": "display" },
+        "relationships": {
+          "parent": "parent-1",
+          "siblings": ["child-2", "child-3"]
+        }
+      }
+    ],
+    "circular": [
+      {
+        "id": "circular-a",
+        "element": { "type": "display" },
+        "relationships": {
+          "next": "circular-b"
+        }
+      },
+      {
+        "id": "circular-b",
+        "element": { "type": "display" },
+        "relationships": {
+          "next": "circular-c"
+        }
+      },
+      {
+        "id": "circular-c",
+        "element": { "type": "display" },
+        "relationships": {
+          "next": "circular-a"
+        }
+      }
+    ],
+    "complex": [
+      {
+        "id": "hub-component",
+        "element": { "type": "container" },
+        "relationships": {
+          "manages": ["component-1", "component-2"],
+          "triggeredBy": ["trigger-1", "trigger-2"],
+          "validates": ["form-1", "form-2"],
+          "updates": ["display-1", "display-2"]
+        }
+      }
+    ]
+  },
+  "queries": {
+    "simple": [
+      { "type": "action" },
+      { "intent": "submit" },
+      { "tags": ["critical"] }
+    ],
+    "complex": [
+      {
+        "type": "action",
+        "intent": "submit",
+        "context": { "flow": "checkout" }
+      },
+      {
+        "type": ["action", "input"],
+        "tags": ["critical", "validated"]
+      },
+      {
+        "relationships": { "parent": "container-main" },
+        "context": { "level": 2 }
+      }
+    ],
+    "performance": [
+      {
+        "type": "*",
+        "description": "Match all components"
+      },
+      {
+        "id": "component-*",
+        "description": "Wildcard ID match"
+      },
+      {
+        "type": "!display",
+        "description": "Negation query"
+      }
+    ]
+  }
+}

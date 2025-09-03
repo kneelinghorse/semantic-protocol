@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "@prisma/generator-helper": "^5.0.0",
-    "@kneelinghorse/semantic-protocol": "^1.0.0"
+    "@kneelinghorse/semantic-protocol": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
