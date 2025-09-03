@@ -1,6 +1,6 @@
 {
   "name": "@kneelinghorse/semantic-protocol-devtools",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Browser DevTools extension for Semantic Protocol debugging and visualization",
   "private": true,
   "scripts": {

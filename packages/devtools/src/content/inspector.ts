@@ -3,7 +3,7 @@
  * Injects semantic inspection capabilities into the page
  */
 
-import { SemanticProtocol } from '@semantic-protocol/core';
+import { SemanticProtocol } from '@kneelinghorse/semantic-protocol';
 
 interface SemanticComponent {
   id: string;

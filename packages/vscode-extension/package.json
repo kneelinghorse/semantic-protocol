@@ -2,7 +2,7 @@
   "name": "semantic-protocol-vscode",
   "displayName": "Semantic Protocol",
   "description": "IntelliSense, validation, and tools for Semantic Protocol",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "publisher": "semantic-protocol",
   "engines": {
     "vscode": "^1.74.0"

@@ -1,5 +1,5 @@
 import type { Directive, DirectiveBinding } from 'vue'
-import { SemanticProtocol } from '@semantic-protocol/core'
+import { SemanticProtocol } from '@kneelinghorse/semantic-protocol'
 import type { SemanticDirectiveBinding, FieldDefinition, AnalysisResult } from '../types'
 
 // Global protocol instance for directive

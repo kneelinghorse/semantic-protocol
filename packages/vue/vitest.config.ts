@@ -33,7 +33,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      '@semantic-protocol/core': resolve(__dirname, '../../semantic-protocol.ts')
+      '@kneelinghorse/semantic-protocol': resolve(__dirname, '../../semantic-protocol.ts')
     }
   }
 })

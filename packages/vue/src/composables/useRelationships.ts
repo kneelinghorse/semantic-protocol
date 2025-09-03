@@ -1,5 +1,5 @@
 import { ref, computed, reactive, toRefs } from 'vue'
-import { semanticUtils } from '@semantic-protocol/core'
+import { semanticUtils } from '@kneelinghorse/semantic-protocol'
 import type { 
   AnalysisResult, 
   SemanticRelationship, 

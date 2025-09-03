@@ -5,7 +5,7 @@
 
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { SemanticProtocol } from '@semantic-protocol/core'
+import { SemanticProtocol } from '@kneelinghorse/semantic-protocol'
 import type { 
   AnalysisResult, 
   FieldDefinition, 

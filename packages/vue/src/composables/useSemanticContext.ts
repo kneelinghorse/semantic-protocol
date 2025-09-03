@@ -1,5 +1,5 @@
 import { inject, provide, type InjectionKey } from 'vue'
-import { SemanticProtocol } from '@semantic-protocol/core'
+import { SemanticProtocol } from '@kneelinghorse/semantic-protocol'
 import type { SemanticContext, SemanticVueOptions } from '../types'
 
 // Context injection key

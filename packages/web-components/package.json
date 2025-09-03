@@ -1,6 +1,6 @@
 {
   "name": "@kneelinghorse/semantic-protocol-web-components",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Web Components for Semantic Protocol - Framework-agnostic custom elements",
   "main": "dist/semantic-components.js",
   "module": "dist/semantic-components.esm.js",

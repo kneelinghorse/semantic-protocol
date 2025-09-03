@@ -64,7 +64,7 @@
     "vue": "^3.3.0"
   },
   "dependencies": {
-    "@kneelinghorse/semantic-protocol": "^2.0.0"
+    "@kneelinghorse/semantic-protocol": "^2.0.1"
   },
   "devDependencies": {
     "@nuxt/kit": "^3.8.0",

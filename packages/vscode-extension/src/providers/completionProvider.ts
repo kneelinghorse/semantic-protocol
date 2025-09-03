@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { SemanticProtocol } from '@semantic-protocol/core';
+import { SemanticProtocol } from '@kneelinghorse/semantic-protocol';
 
 export class SemanticCompletionProvider implements vscode.CompletionItemProvider {
     private protocol = new SemanticProtocol();

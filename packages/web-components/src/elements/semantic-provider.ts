@@ -1,5 +1,5 @@
 import { SemanticElement } from '../base/SemanticElement';
-import { SemanticProtocol, SemanticManifest } from '@semantic-protocol/core';
+import { SemanticProtocol, SemanticManifest } from '@kneelinghorse/semantic-protocol';
 
 interface RegisteredComponent {
   id: string;

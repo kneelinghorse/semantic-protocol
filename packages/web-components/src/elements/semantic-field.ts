@@ -1,5 +1,5 @@
 import { SemanticElement } from '../base/SemanticElement';
-import { SemanticManifest } from '@semantic-protocol/core';
+import { SemanticManifest } from '@kneelinghorse/semantic-protocol';
 
 type FieldType = 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'date' | 'select' | 'textarea';
 type ValidationRule = 'required' | 'email' | 'minLength' | 'maxLength' | 'pattern' | 'min' | 'max';

@@ -4,7 +4,7 @@ import { nextTick } from 'vue'
 import { vSemantics, semanticsDirectiveUtils } from '../../src/directives/vSemantics'
 
 // Mock the core semantic protocol
-vi.mock('@semantic-protocol/core', () => ({
+vi.mock('@kneelinghorse/semantic-protocol', () => ({
   SemanticProtocol: vi.fn().mockImplementation(() => ({
     analyze: vi.fn().mockReturnValue({
       field: 'email',
@@ -409,7 +409,7 @@ describe('v-semantics directive', () => {
   describe('error handling', () => {
     it('should handle analysis errors gracefully', async () => {
       // Mock protocol to throw error
-      const { SemanticProtocol } = require('@semantic-protocol/core')
+      const { SemanticProtocol } = require('@kneelinghorse/semantic-protocol')
       const mockProtocol = new SemanticProtocol()
       mockProtocol.analyze.mockImplementation(() => {
         throw new Error('Analysis failed')

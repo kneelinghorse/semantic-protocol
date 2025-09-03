@@ -168,7 +168,7 @@ async function installDependencies(
   framework: string,
   typescript: boolean
 ): Promise<void> {
-  const deps: string[] = ['@semantic-protocol/core'];
+  const deps: string[] = ['@kneelinghorse/semantic-protocol'];
   const devDeps: string[] = [];
 
   // Add framework-specific packages

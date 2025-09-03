@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { SemanticProtocol, SemanticManifest } from '@semantic-protocol/core';
+import { SemanticProtocol, SemanticManifest } from '@kneelinghorse/semantic-protocol';
 
 export class SemanticDiagnosticProvider {
     private diagnosticCollection: vscode.DiagnosticCollection;

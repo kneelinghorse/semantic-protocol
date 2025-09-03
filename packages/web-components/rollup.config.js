@@ -18,7 +18,7 @@ const banner = `/*!
 // Base configuration
 const baseConfig = {
   input: 'src/index.ts',
-  external: isCDN ? [] : ['@semantic-protocol/core'],
+  external: isCDN ? [] : ['@kneelinghorse/semantic-protocol'],
   plugins: [
     typescript({
       tsconfig: './tsconfig.json',
@@ -89,7 +89,7 @@ const umdConfig = {
     banner,
     sourcemap: !production,
     globals: {
-      '@semantic-protocol/core': 'SemanticProtocol',
+      '@kneelinghorse/semantic-protocol': 'SemanticProtocol',
     },
   },
   plugins: [

@@ -1,4 +1,4 @@
-import { SemanticProtocol, SemanticManifest, ValidationResult } from '@semantic-protocol/core';
+import { SemanticProtocol, SemanticManifest, ValidationResult } from '@kneelinghorse/semantic-protocol';
 
 export interface SemanticElementConfig {
   useShadow?: boolean;

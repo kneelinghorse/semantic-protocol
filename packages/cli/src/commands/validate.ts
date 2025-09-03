@@ -3,7 +3,7 @@ import path from 'path';
 import glob from 'glob';
 import chokidar from 'chokidar';
 import chalk from 'chalk';
-import { SemanticProtocol, SemanticManifest, ValidationResult } from '@semantic-protocol/core';
+import { SemanticProtocol, SemanticManifest, ValidationResult } from '@kneelinghorse/semantic-protocol';
 import { logger } from '../utils/logger';
 import { loadConfig } from '../utils/config';
 import { table } from 'table';

@@ -1,7 +1,7 @@
 // Utility functions for semantic protocol Vue integration
 
 import type { AnalysisResult, SemanticType, FieldDefinition } from '../types'
-import { semanticUtils as coreUtils } from '@semantic-protocol/core'
+import { semanticUtils as coreUtils } from '@kneelinghorse/semantic-protocol'
 
 /**
  * Vue-specific semantic utilities

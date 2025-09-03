@@ -1,5 +1,5 @@
 import { SemanticElement } from '../base/SemanticElement';
-import { SemanticManifest } from '@semantic-protocol/core';
+import { SemanticManifest } from '@kneelinghorse/semantic-protocol';
 
 interface DiscoveryResult {
   id: string;

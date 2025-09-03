@@ -21,11 +21,11 @@ export default defineConfig({
       formats: ['es', 'cjs']
     },
     rollupOptions: {
-      external: ['vue', '@semantic-protocol/core'],
+      external: ['vue', '@kneelinghorse/semantic-protocol'],
       output: {
         globals: {
           vue: 'Vue',
-          '@semantic-protocol/core': 'SemanticProtocol'
+          '@kneelinghorse/semantic-protocol': 'SemanticProtocol'
         }
       }
     },

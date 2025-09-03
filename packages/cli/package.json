@@ -1,6 +1,6 @@
 {
   "name": "@kneelinghorse/semantic-protocol-cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Command-line interface for Semantic Protocol - analyze, validate, and generate semantic UI components",
   "bin": {
     "semantic": "./bin/semantic.js",
@@ -23,7 +23,7 @@
     "semantic": "node bin/semantic.js"
   },
   "dependencies": {
-    "@kneelinghorse/semantic-protocol": "^2.0.0",
+    "@kneelinghorse/semantic-protocol": "^2.0.1",
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
     "cosmiconfig": "^9.0.0",

@@ -4,7 +4,7 @@ import type {
   AnalysisResult, 
   FieldDefinition, 
   SemanticProtocol as CoreSemanticProtocol 
-} from '@semantic-protocol/core'
+} from '@kneelinghorse/semantic-protocol'
 import type { Ref, ComputedRef, App, Plugin } from 'vue'
 
 // Re-export core types
@@ -16,7 +16,7 @@ export type {
   SemanticMatch,
   RenderInstruction,
   DataType
-} from '@semantic-protocol/core'
+} from '@kneelinghorse/semantic-protocol'
 
 // Vue-specific types
 export interface SemanticVueOptions {

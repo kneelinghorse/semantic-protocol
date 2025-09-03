@@ -1,6 +1,6 @@
 {
   "name": "@kneelinghorse/semantic-protocol-react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "React integration for the Semantic Protocol - self-aware UI components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,7 +15,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@kneelinghorse/semantic-protocol": "^2.0.0"
+    "@kneelinghorse/semantic-protocol": "^2.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.8.0",
