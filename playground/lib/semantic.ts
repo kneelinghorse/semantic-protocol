@@ -4,7 +4,7 @@
  */
 
 // Core Types
-export type SemanticType = 
+export type SemanticType =
   | 'cancellation'
   | 'currency'
   | 'temporal'
@@ -18,7 +18,7 @@ export type SemanticType =
 
 export type RenderContext = 'list' | 'detail' | 'form' | 'timeline';
 
-export type DataType = 
+export type DataType =
   | 'string'
   | 'number'
   | 'boolean'
@@ -86,57 +86,57 @@ export class SemanticRules {
     types?: DataType[];
     confidence: { keyword: number; type: number };
   }> = {
-    cancellation: {
-      keywords: ['cancel', 'terminate', 'expire', 'revoke', 'void', 'delete', 'abort', 'stop'],
-      types: ['boolean'],
-      confidence: { keyword: 95, type: 85 }
-    },
-    currency: {
-      keywords: ['price', 'amount', 'balance', 'cost', 'fee', 'payment', 'charge', 'salary', 'revenue'],
-      types: ['decimal', 'money', 'currency', 'number'],
-      confidence: { keyword: 90, type: 95 }
-    },
-    temporal: {
-      keywords: ['created', 'updated', 'modified', 'deleted', 'timestamp', 'date', 'time'],
-      types: ['timestamp', 'datetime', 'date', 'time'],
-      confidence: { keyword: 90, type: 95 }
-    },
-    premium: {
-      keywords: ['premium', 'pro', 'vip', 'gold', 'platinum', 'elite', 'plus', 'tier', 'subscription'],
-      types: ['boolean', 'string'],
-      confidence: { keyword: 90, type: 70 }
-    },
-    identifier: {
-      keywords: ['id', 'uid', 'uuid', 'guid', 'key', 'code', 'ref', 'reference'],
-      types: ['string', 'integer'],
-      confidence: { keyword: 95, type: 80 }
-    },
-    status: {
-      keywords: ['status', 'state', 'active', 'enabled', 'visible', 'published', 'draft'],
-      types: ['boolean', 'string'],
-      confidence: { keyword: 95, type: 75 }
-    },
-    percentage: {
-      keywords: ['percent', 'pct', 'rate', 'ratio', 'factor', 'discount', 'tax'],
-      types: ['decimal', 'float', 'number'],
-      confidence: { keyword: 95, type: 80 }
-    },
-    email: {
-      keywords: ['email', 'mail', 'contact', 'address'],
-      types: ['string'],
-      confidence: { keyword: 95, type: 70 }
-    },
-    url: {
-      keywords: ['url', 'link', 'website', 'site', 'href', 'path', 'endpoint'],
-      types: ['string'],
-      confidence: { keyword: 95, type: 70 }
-    },
-    danger: {
-      keywords: ['error', 'fail', 'critical', 'severe', 'fatal', 'emergency', 'alert', 'warning'],
-      types: ['boolean', 'string'],
-      confidence: { keyword: 90, type: 70 }
-    }
-  };
+      cancellation: {
+        keywords: ['cancel', 'terminate', 'expire', 'revoke', 'void', 'delete', 'abort', 'stop'],
+        types: ['boolean'],
+        confidence: { keyword: 95, type: 85 }
+      },
+      currency: {
+        keywords: ['price', 'amount', 'balance', 'cost', 'fee', 'payment', 'charge', 'salary', 'revenue'],
+        types: ['decimal', 'money', 'currency', 'number'],
+        confidence: { keyword: 90, type: 95 }
+      },
+      temporal: {
+        keywords: ['created', 'updated', 'modified', 'deleted', 'timestamp', 'date', 'time'],
+        types: ['timestamp', 'datetime', 'date', 'time'],
+        confidence: { keyword: 90, type: 95 }
+      },
+      premium: {
+        keywords: ['premium', 'pro', 'vip', 'gold', 'platinum', 'elite', 'plus', 'tier', 'subscription'],
+        types: ['boolean', 'string'],
+        confidence: { keyword: 90, type: 70 }
+      },
+      identifier: {
+        keywords: ['id', 'uid', 'uuid', 'guid', 'key', 'code', 'ref', 'reference'],
+        types: ['string', 'integer'],
+        confidence: { keyword: 95, type: 80 }
+      },
+      status: {
+        keywords: ['status', 'state', 'active', 'enabled', 'visible', 'published', 'draft'],
+        types: ['boolean', 'string'],
+        confidence: { keyword: 95, type: 75 }
+      },
+      percentage: {
+        keywords: ['percent', 'pct', 'rate', 'ratio', 'factor', 'discount', 'tax'],
+        types: ['decimal', 'float', 'number'],
+        confidence: { keyword: 95, type: 80 }
+      },
+      email: {
+        keywords: ['email', 'mail', 'contact', 'address'],
+        types: ['string'],
+        confidence: { keyword: 95, type: 70 }
+      },
+      url: {
+        keywords: ['url', 'link', 'website', 'site', 'href', 'path', 'endpoint'],
+        types: ['string'],
+        confidence: { keyword: 95, type: 70 }
+      },
+      danger: {
+        keywords: ['error', 'fail', 'critical', 'severe', 'fatal', 'emergency', 'alert', 'warning'],
+        types: ['boolean', 'string'],
+        confidence: { keyword: 90, type: 70 }
+      }
+    };
 
   static analyze(field: FieldDefinition): SemanticMatch[] {
     const matches: SemanticMatch[] = [];
@@ -181,15 +181,15 @@ export class SemanticRules {
           confidence = Math.max(confidence, 90);
           reasons.push("Value contains '@' (email pattern)");
         }
-        if (semantic === 'url' && typeof field.value === 'string' && 
+        if (semantic === 'url' && typeof field.value === 'string' &&
             (field.value.startsWith('http://') || field.value.startsWith('https://'))) {
           confidence = Math.max(confidence, 90);
-          reasons.push("Value starts with http(s):// (URL pattern)");
+          reasons.push('Value starts with http(s):// (URL pattern)');
         }
-        if (semantic === 'percentage' && typeof field.value === 'number' && 
+        if (semantic === 'percentage' && typeof field.value === 'number' &&
             field.value >= 0 && field.value <= 1) {
           confidence = Math.max(confidence, 70);
-          reasons.push("Value between 0-1 (percentage pattern)");
+          reasons.push('Value between 0-1 (percentage pattern)');
         }
       }
 
@@ -300,7 +300,7 @@ export class RenderMap {
         detail: { component: 'text', variant: 'date' },
         form: { component: 'datepicker' },
         timeline: { component: 'timestamp' }
-      },
+      }
       // ... other types follow similar pattern
     } as Record<DataType, Record<RenderContext, RenderInstruction>>;
 
@@ -319,7 +319,7 @@ export class SemanticProtocol {
   analyze(field: FieldDefinition, context: RenderContext = 'list'): AnalysisResult {
     const semantics = SemanticRules.analyze(field);
     const bestMatch = semantics.find(s => s.confidence >= this.confidenceThreshold) || null;
-    
+
     const renderInstruction = bestMatch
       ? RenderMap.getRenderInstruction(bestMatch.semantic, context)
       : RenderMap.getDefault(field.type, context);
@@ -408,7 +408,7 @@ export const semanticUtils = {
 
   groupBySemantics: (results: AnalysisResult[]): Record<SemanticType, AnalysisResult[]> => {
     const grouped = {} as Record<SemanticType, AnalysisResult[]>;
-    
+
     for (const result of results) {
       if (result.bestMatch) {
         const semantic = result.bestMatch.semantic;
@@ -418,7 +418,7 @@ export const semanticUtils = {
         grouped[semantic].push(result);
       }
     }
-    
+
     return grouped;
   }
 };
@@ -428,8 +428,8 @@ const defaultAnalyzer = new SemanticProtocol();
 
 // Convenience function for simple analysis
 export function analyze(
-  name: string, 
-  type: DataType | string, 
+  name: string,
+  type: DataType | string,
   options?: { context?: RenderContext; description?: string }
 ): AnalysisResult {
   const field: FieldDefinition = {

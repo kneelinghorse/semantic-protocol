@@ -8,16 +8,16 @@ interface PlaygroundStore {
   // Input state
   inputSchema: string;
   schemaType: SchemaType;
-  
+
   // Analysis results
   semanticResults: AnalysisResult[];
   missionAnalysis?: MissionSemantics;
-  
+
   // UI state
   selectedContext: RenderContext;
   isAnalyzing: boolean;
   showMissionMode: boolean;
-  
+
   // Actions
   setInputSchema: (schema: string) => void;
   setSchemaType: (type: SchemaType) => void;
@@ -26,7 +26,7 @@ interface PlaygroundStore {
   setSelectedContext: (context: RenderContext) => void;
   setIsAnalyzing: (analyzing: boolean) => void;
   toggleMissionMode: () => void;
-  
+
   // Stats
   decisionsEliminated: number;
   incrementDecisions: () => void;
@@ -42,7 +42,7 @@ export const usePlaygroundStore = create<PlaygroundStore>((set) => ({
   isAnalyzing: false,
   showMissionMode: false,
   decisionsEliminated: 0,
-  
+
   // Actions
   setInputSchema: (schema) => set({ inputSchema: schema }),
   setSchemaType: (type) => set({ schemaType: type }),
@@ -51,7 +51,7 @@ export const usePlaygroundStore = create<PlaygroundStore>((set) => ({
   setSelectedContext: (context) => set({ selectedContext: context }),
   setIsAnalyzing: (analyzing) => set({ isAnalyzing: analyzing }),
   toggleMissionMode: () => set((state) => ({ showMissionMode: !state.showMissionMode })),
-  incrementDecisions: () => set((state) => ({ 
-    decisionsEliminated: state.decisionsEliminated + 1 
-  })),
+  incrementDecisions: () => set((state) => ({
+    decisionsEliminated: state.decisionsEliminated + 1
+  }))
 }));

@@ -1,11 +1,11 @@
 /**
  * Mission Protocol - Semantic Understanding for AI Code Missions
- * 
+ *
  * Just like Semantic Protocol understands data fields,
  * Mission Protocol understands coding missions!
  */
 
-export type MissionType = 
+export type MissionType =
   | 'npm_package'
   | 'api_integration'
   | 'cli_tool'
@@ -108,7 +108,7 @@ export class MissionProtocol {
     // Check each mission type
     for (const [type, pattern] of Object.entries(this.patterns)) {
       let score = 0;
-      
+
       // Check keywords (high weight) - bonus for exact word match
       for (const keyword of pattern.keywords) {
         // Exact word boundary match gets highest score
@@ -120,14 +120,14 @@ export class MissionProtocol {
           score += 5;
         }
       }
-      
+
       // Check signals (medium weight)
       for (const signal of pattern.signals) {
         if (requestLower.includes(signal)) {
           score += 5;
         }
       }
-      
+
       // Special boost for primary intent words at the beginning
       const primaryIntentWords = {
         'write': ['test_suite', 'documentation'],
@@ -139,13 +139,13 @@ export class MissionProtocol {
         'document': ['documentation'],
         'test': ['test_suite']
       };
-      
+
       for (const [intentWord, types] of Object.entries(primaryIntentWords)) {
         if (requestLower.startsWith(intentWord) && types.includes(type)) {
           score += 10;
         }
       }
-      
+
       if (score > maxScore) {
         maxScore = score;
         bestMatch = { type: type as MissionType, score };
@@ -178,7 +178,7 @@ export class MissionProtocol {
 
   generatePlan(semantics: MissionSemantics): string {
     const plan = [];
-    
+
     plan.push(`## Mission Type: ${semantics.type}`);
     plan.push(`Confidence: ${semantics.confidence}%`);
     plan.push(`Complexity: ${semantics.complexity}`);
@@ -191,7 +191,7 @@ export class MissionProtocol {
     semantics.deliverables.forEach(d => plan.push(`- ${d}`));
     plan.push('');
     plan.push('### Execution Strategy:');
-    
+
     switch(semantics.type) {
       case 'npm_package':
         plan.push('1. Initialize package.json with proper metadata');
@@ -202,7 +202,7 @@ export class MissionProtocol {
         plan.push('6. Test locally with npm link');
         plan.push('7. Publish to npm');
         break;
-      
+
       case 'api_integration':
         plan.push('1. Research API documentation');
         plan.push('2. Set up authentication handling');
@@ -212,7 +212,7 @@ export class MissionProtocol {
         plan.push('6. Write integration tests');
         plan.push('7. Document usage examples');
         break;
-      
+
       case 'cli_tool':
         plan.push('1. Set up command structure');
         plan.push('2. Parse arguments and flags');
@@ -222,7 +222,7 @@ export class MissionProtocol {
         plan.push('6. Make it executable');
         plan.push('7. Test command variations');
         break;
-      
+
       case 'web_app':
         plan.push('1. Set up project structure (pages, components, styles)');
         plan.push('2. Configure routing and navigation');
@@ -232,7 +232,7 @@ export class MissionProtocol {
         plan.push('6. Optimize performance');
         plan.push('7. Deploy to hosting platform');
         break;
-      
+
       case 'data_pipeline':
         plan.push('1. Define data schema and validation rules');
         plan.push('2. Create input parsers');
@@ -242,7 +242,7 @@ export class MissionProtocol {
         plan.push('6. Create batch processing capability');
         plan.push('7. Add monitoring and logging');
         break;
-      
+
       case 'ui_component':
         plan.push('1. Define component props interface');
         plan.push('2. Build component structure');
@@ -252,7 +252,7 @@ export class MissionProtocol {
         plan.push('6. Add unit tests');
         plan.push('7. Document usage examples');
         break;
-      
+
       case 'database_schema':
         plan.push('1. Design entity relationships');
         plan.push('2. Define tables and columns');
@@ -262,7 +262,7 @@ export class MissionProtocol {
         plan.push('6. Generate TypeScript types');
         plan.push('7. Test database operations');
         break;
-      
+
       case 'deployment_config':
         plan.push('1. Choose deployment platform');
         plan.push('2. Create Dockerfile or build config');
@@ -272,7 +272,7 @@ export class MissionProtocol {
         plan.push('6. Set up rollback strategy');
         plan.push('7. Document deployment process');
         break;
-      
+
       case 'test_suite':
         plan.push('1. Set up test framework and config');
         plan.push('2. Write unit tests for functions');
@@ -282,7 +282,7 @@ export class MissionProtocol {
         plan.push('6. Configure coverage reporting');
         plan.push('7. Add to CI pipeline');
         break;
-      
+
       case 'documentation':
         plan.push('1. Create README with overview');
         plan.push('2. Add installation instructions');
@@ -292,7 +292,7 @@ export class MissionProtocol {
         plan.push('6. Include contribution guidelines');
         plan.push('7. Generate API reference docs');
         break;
-      
+
       default:
         plan.push('1. Analyze requirements');
         plan.push('2. Create file structure');
@@ -301,7 +301,7 @@ export class MissionProtocol {
         plan.push('5. Document');
         break;
     }
-    
+
     return plan.join('\n');
   }
 }
@@ -311,7 +311,7 @@ export function analyzeMission(request: string) {
   const protocol = new MissionProtocol();
   const semantics = protocol.analyze(request);
   const plan = protocol.generatePlan(semantics);
-  
+
   return {
     semantics,
     plan
@@ -341,7 +341,7 @@ examples.forEach(request => {
   console.log(`   Confidence: ${result.semantics.confidence}%`);
   console.log(`   Complexity: ${result.semantics.complexity}`);
   console.log(`   Time: ${result.semantics.estimatedTime}`);
-  
+
   if (result.semantics.confidence > 50) {
     console.log(`   ✅ High confidence - ready to execute!`);
   } else {

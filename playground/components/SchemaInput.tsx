@@ -17,7 +17,7 @@ const schemaTypes = [
   { id: 'typescript', label: 'TypeScript', icon: Code },
   { id: 'json', label: 'JSON', icon: FileJson },
   { id: 'sql', label: 'SQL', icon: FileCode2 },
-  { id: 'csv', label: 'CSV', icon: Table },
+  { id: 'csv', label: 'CSV', icon: Table }
 ];
 
 export default function SchemaInput() {
@@ -29,7 +29,7 @@ export default function SchemaInput() {
     setSchemaType,
     setSemanticResults,
     setIsAnalyzing,
-    incrementDecisions,
+    incrementDecisions
   } = usePlaygroundStore();
 
   const analyzeSchema = async () => {
@@ -47,9 +47,9 @@ export default function SchemaInput() {
         const protocol = new SemanticProtocol();
         const fields = parseSchema(inputSchema, schemaType);
         const results = fields.map(field => {
-          const fieldDef = { 
-            name: field.name, 
-            type: field.type as any 
+          const fieldDef = {
+            name: field.name,
+            type: field.type as any
           };
           const semantic = protocol.analyze(fieldDef, 'list');
           // Count decisions eliminated
@@ -71,7 +71,7 @@ export default function SchemaInput() {
 
   const parseSchema = (schema: string, type: string) => {
     const fields: Array<{ name: string; type: string }> = [];
-    
+
     if (type === 'prisma') {
       const lines = schema.split('\n');
       lines.forEach(line => {
@@ -98,7 +98,7 @@ export default function SchemaInput() {
         toast.error('Invalid JSON');
       }
     }
-    
+
     return fields;
   };
 
@@ -125,10 +125,10 @@ export default function SchemaInput() {
                 onClick={() => setSchemaType(type.id as any)}
                 className={`
                   flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-all
-                  ${schemaType === type.id 
-                    ? 'bg-violet-600 text-white' 
-                    : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
-                  }
+                  ${schemaType === type.id
+                ? 'bg-violet-600 text-white'
+                : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+              }
                 `}
               >
                 <Icon className="w-4 h-4" />
@@ -210,6 +210,6 @@ function getPlaceholder(type: string) {
     csv: `id,email,full_name,date_of_birth,is_premium,account_balance
 123,user@example.com,John Doe,1990-01-01,true,1000.00`
   };
-  
+
   return placeholders[type] || placeholders.prisma;
 }

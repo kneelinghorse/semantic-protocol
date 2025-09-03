@@ -29,6 +29,7 @@
   "include": [
     "index.ts",
     "semantic-protocol.ts",
+    "cli.ts",
     "src/**/*.ts"
   ],
   "exclude": [

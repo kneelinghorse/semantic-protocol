@@ -1,9 +1,12 @@
 {
   "name": "@kneelinghorse/semantic-protocol",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Teaching software to understand itself - semantic manifests for self-aware UI components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "semantic-protocol": "./dist/cli.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
@@ -28,6 +31,10 @@
   ],
   "author": "Semantic Protocol Contributors",
   "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0"
+  },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "typescript": "^5.0.0",
@@ -35,7 +42,8 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "repository": {
     "type": "git",

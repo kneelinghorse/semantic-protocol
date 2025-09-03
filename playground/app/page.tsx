@@ -12,16 +12,16 @@ import { MissionMode } from '@/components/MissionMode';
 import { SharePanel } from '@/components/SharePanel';
 import { SchemaGallery } from '@/components/SchemaGallery';
 import { Sparkles, Zap, Code2, Brain, Rocket } from 'lucide-react';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast'; // Removed unused import
 
 export default function PlaygroundPage() {
   const [mounted, setMounted] = useState(false);
   const [schemasAnalyzed, setSchemasAnalyzed] = useState(14247);
-  const { 
-    decisionsEliminated, 
-    showMissionMode, 
+  const {
+    decisionsEliminated,
+    showMissionMode,
     toggleMissionMode,
-    semanticResults 
+    semanticResults
   } = usePlaygroundStore();
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function PlaygroundPage() {
               Stop Guessing Which Component to Use
             </p>
             <div className="flex items-center justify-center gap-8 text-sm">
-              <motion.div 
+              <motion.div
                 className="flex items-center gap-2"
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -158,3 +158,4 @@ export default function PlaygroundPage() {
     </div>
   );
 }
+

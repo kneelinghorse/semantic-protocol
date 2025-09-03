@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { usePlaygroundStore } from '@/lib/store';
-import { 
-  Sparkles, Copy, Check, Mail, Calendar, DollarSign, 
+import {
+  Sparkles, Copy, Check, Mail, Calendar, DollarSign,
   Star, Hash, Globe, Phone, MapPin, User, Shield,
   Database, Code, Zap, Brain
 } from 'lucide-react';
@@ -14,7 +14,7 @@ import { analyzeMission } from '@/lib/mission';
 // Semantic Analyzer Component
 export function SemanticAnalyzer() {
   const { semanticResults } = usePlaygroundStore();
-  
+
   if (!semanticResults.length) return null;
 
   return (
@@ -50,7 +50,7 @@ export function SemanticAnalyzer() {
 // Confidence Meters Component
 export function ConfidenceMeters() {
   const { semanticResults } = usePlaygroundStore();
-  
+
   if (!semanticResults.length) return null;
 
   return (
@@ -62,7 +62,7 @@ export function ConfidenceMeters() {
             key={i}
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ delay: i * 0.1, type: "spring" }}
+            transition={{ delay: i * 0.1, type: 'spring' }}
             className="space-y-1"
           >
             <div className="flex justify-between text-sm">
@@ -90,11 +90,11 @@ export function ConfidenceMeters() {
 export function CodeGenerator() {
   const { semanticResults, selectedContext } = usePlaygroundStore();
   const [copied, setCopied] = useState(false);
-  
+
   if (!semanticResults.length) return null;
 
   const generateCode = () => {
-    return semanticResults.map(r => 
+    return semanticResults.map(r =>
       `<SemanticField field="${r.field}" type="${r.bestMatch?.semantic || 'unknown'}" context="${selectedContext}" />`
     ).join('\n');
   };
@@ -149,7 +149,7 @@ export function MissionMode() {
         <Brain className="w-5 h-5 text-purple-400" />
         <h3 className="text-lg font-semibold text-purple-300">Mission Analysis</h3>
       </div>
-      
+
       <button
         onClick={analyzeMissionMode}
         className="mb-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm"
@@ -184,7 +184,7 @@ export function MissionMode() {
 // Schema Gallery Component
 export function SchemaGallery() {
   const { setInputSchema, setSchemaType } = usePlaygroundStore();
-  
+
   const examples = [
     {
       name: 'E-commerce',
@@ -246,7 +246,7 @@ export function SharePanel() {
 // Helper functions
 function getSemanticIcon(type: string | null) {
   if (!type) return <Database className="w-4 h-4 text-zinc-500" />;
-  
+
   const icons: Record<string, any> = {
     email: <Mail className="w-4 h-4 text-blue-500" />,
     temporal: <Calendar className="w-4 h-4 text-green-500" />,
